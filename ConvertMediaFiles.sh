@@ -1,8 +1,7 @@
 #!/bin/bash
 
-URLConfigUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/URLConfig.sh";
+URLConfigUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/URLConfig.sh"
 URLConfigPath="./URLConfig.sh"
-
 
 function CreateDirectory() {
     # $1 directory path or name
@@ -11,28 +10,33 @@ function CreateDirectory() {
     fi
 }
 
-function DownloadScript() {
+function DownloadFile() {
     #2 path ,1 url
     if [ ! -f $2 ]; then
         wget $1 -O $2
     fi
 }
 
+function UpdateOfVersion() {
+    #removes previous files
+    rm -rf Scripts
+    rm URLConfig.sh
 
+    DownloadFile $URLConfigUrl $URLConfigPath
+    . $URLConfigPath
+}
+
+DownloadFile $URLConfigUrl $URLConfigPath
 . $URLConfigPath
 CurrentVersion=$(wget -qO - $FileVersionUrl)
 
-if (( CurrentVersion !=  FileVersion   ))
-then 
-    echo "not matched"
-else 
-    echo "matched"
+if ((CurrentVersion != FileVersion)); then
+    UpdateOfVersion
+    #echo "not matched"
 fi
 
-
-
 CreateDirectory $ScriptDir
-DownloadScript $HomeUrl $HomePath
+DownloadFile $HomeUrl $HomePath
 
 # Lunch Home Script
 $HomePath
