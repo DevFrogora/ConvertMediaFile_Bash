@@ -1,6 +1,7 @@
 #/!bin/bash
 
-. ./Utils.sh
+. ./Scripts/Config/URLConfig.sh
+. $UtilsDir/FileUtil.sh
 
 FrameDirectory="Frames"
 NullFile="NUL"

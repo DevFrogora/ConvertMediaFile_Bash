@@ -40,4 +40,4 @@ fi
 # then clear the update files
 
 # Lunch Home Script
-$HomePath
+$ScriptDir/Home.sh

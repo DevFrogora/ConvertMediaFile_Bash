@@ -1,6 +1,7 @@
 #!/bin/bash
 
-. ./Scripts/gif2frames.sh
+. ./Scripts/Config/URLConfig.sh
+. $addonsDir/gif2frames.sh
 
 echo "-----Convert Media Home------";
 while true;
