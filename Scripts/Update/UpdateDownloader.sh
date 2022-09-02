@@ -9,7 +9,7 @@ function PreUpdate() {
 
 function Progress() {
     local message="Downloading Progress "
-    local carriageReturn="\r"
+
     local number=$1
     local num=$((number))
 
@@ -23,13 +23,13 @@ function Progress() {
 
 function UpdateProgress() {
     local fileCount=0
-    for i in "${!Paths[@]}"; do
+    for key in "${!Paths[@]}"; do
         fileCount=$((fileCount + 1))
         # Url ${URLs[$i]} , Path ${Paths[$i]}
         local lengthOfPath="${#Paths[@]}"
         Progress $((fileCount)) $lengthOfPath
 
-        DownloadFile "$BaseUrl/${Paths[$i]}" "${Paths[$i]}"
+        DownloadFile "$BaseUrl/${Paths[$key]}" "${Paths[$key]}"
         sleep 3s
     done
 
