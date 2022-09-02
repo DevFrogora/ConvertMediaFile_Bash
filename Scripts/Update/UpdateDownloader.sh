@@ -28,8 +28,9 @@ function UpdateProgress() {
         # Url ${URLs[$i]} , Path ${Paths[$i]}
         local lengthOfPath="${#Paths[@]}"
         Progress $((fileCount)) $lengthOfPath
+
+        DownloadFile "$BaseUrl/${Paths[$i]}" "${Paths[$i]}"
         sleep 3s
-        DownloadFile "$BaseUrl/${Paths[$i]}" "./${Paths[$i]}"
     done
 
     echo -ne '\n'
