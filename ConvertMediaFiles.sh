@@ -5,8 +5,10 @@ checkForUpdateUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile
 UpdateDownloaderUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/UpdateDownloader.sh"
 FileUtilsUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Utils/FileUtil.sh"
 
+#check if we already have the configuration file or not
 if [ ! -f "./Scripts/Config/URLConfig.sh" ]; then
 
+    # check if we have download file 
     if [ ! -f "./URLConfig.sh" ]; then
         wget $URLConfigUrl
         wget $checkForUpdateUrl
@@ -26,8 +28,9 @@ else
 
 fi
 
-if [ $(IsUpdateNeeded) == "true" ]; then
+if [ "$(IsUpdateNeeded)" == "true" ]; then
     RemovePreviousFiles
+    BeforeUpdate
     UpdateCycle
 fi
 
