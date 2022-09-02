@@ -11,6 +11,7 @@ function DownloadFile() {
         wget -q $1 -O $2
         echo "Path $2 , URL $1"
     fi
+    echo "~Path $2 , URL $1"
 }
 
 function RemoveNULFile() {
