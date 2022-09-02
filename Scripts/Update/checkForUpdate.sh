@@ -4,7 +4,7 @@ function RemovePreviousFiles() {
 }
 
 function IsUpdateNeeded() {
-    if [  -f "./Scripts/Config/URLConfig.sh" ]; then
+    if [ -f "./Scripts/Config/URLConfig.sh" ]; then
         CurrentVersion=$(wget -qO - $FileVersionUrl)
 
         if ((CurrentVersion != FileVersion)); then
@@ -12,9 +12,10 @@ function IsUpdateNeeded() {
             # download the files
             #echo "not matched"
             echo "true"
+        else
+            echo "false"
         fi
     else
         echo "true"
     fi
-    echo "false"
 }

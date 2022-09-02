@@ -6,10 +6,13 @@ UpdateDownloaderUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFi
 FileUtilsUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Utils/FileUtil.sh"
 
 if [ ! -f "./Scripts/Config/URLConfig.sh" ]; then
-    wget $URLConfigUrl
-    wget $checkForUpdateUrl
-    wget $UpdateDownloaderUrl
-    wget $FileUtilsUrl
+
+    if [ ! -f "./URLConfig.sh" ]; then
+        wget $URLConfigUrl
+        wget $checkForUpdateUrl
+        wget $UpdateDownloaderUrl
+        wget $FileUtilsUrl
+    fi
     . ./URLConfig.sh
     . ./checkForUpdate.sh
     . ./UpdateDownloader.sh
