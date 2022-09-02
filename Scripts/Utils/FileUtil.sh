@@ -8,7 +8,7 @@ function CreateDirectory() {
 function DownloadFile() {
     #2 path ,1 url
     if [ ! -f $2 ]; then
-        wget $1 -O $2
+        wget -q $1 -O $2
     fi
 }
 
