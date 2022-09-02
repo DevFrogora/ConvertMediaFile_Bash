@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./Scripts/gif2frames.sh
+
 echo "-----Convert Media Home------";
 while true;
 do 
@@ -9,7 +11,7 @@ do
     read option
 
     case "$option" in 
-            1) echo "one" ;;
+            1) MakeGifToFrames ;;
             2) echo "two" ;;
             *) exit ;;
     esac
