@@ -8,7 +8,7 @@ function PreUpdate() {
 }
 
 function Progress() {
-    local message="Progress "
+    local message="Downloading Progress "
     local carriageReturn="\r"
     local number=$1
     local num=$((number))
