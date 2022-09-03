@@ -23,13 +23,14 @@ function Progress() {
 
 function UpdateProgress() {
     local fileCount=0
+    echo "$RepoRawUrl"
     for key in "${!Paths[@]}"; do
         fileCount=$((fileCount + 1))
         # Url ${URLs[$i]} , Path ${Paths[$i]}
         local lengthOfPath="${#Paths[@]}"
         Progress $((fileCount)) $lengthOfPath
 
-        DownloadFile "$BaseUrl/${Paths[$key]}" "${Paths[$key]}"
+        DownloadFile "$RepoRawUrl/${Paths[$key]}" "${Paths[$key]}"
         sleep 3s
     done
 

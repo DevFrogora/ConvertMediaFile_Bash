@@ -1,10 +1,18 @@
 #!/bin/bash
+RepoRawUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main"
+FTPBaseUrl="ftp://172.22.176.1/ConvertMediaFile_Bash_Repo"
 
-URLConfigUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Config/URLConfig.sh"
-checkForUpdateUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/checkForUpdate.sh"
-UpdateDownloaderUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/UpdateDownloader.sh"
-FileUtilsUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Utils/FileUtil.sh"
-ColorUtilUrl=""
+serverName="FTP"
+
+if [ $serverName == "FTP" ]; then 
+    RepoRawUrl=$FTPBaseUrl
+fi
+
+URLConfigUrl=$RepoRawUrl"/Scripts/Config/URLConfig.sh"
+checkForUpdateUrl=$RepoRawUrl"/Scripts/Update/checkForUpdate.sh"
+UpdateDownloaderUrl=$RepoRawUrl"/Scripts/Update/UpdateDownloader.sh"
+FileUtilsUrl=$RepoRawUrl"/Scripts/Utils/FileUtil.sh"
+ColorUtilUrl=$RepoRawUrl"/Scripts/Utils/ColorUtil.sh"
 
 #check if we already have the configuration file or not
 if [ ! -f "./Scripts/Config/URLConfig.sh" ]; then

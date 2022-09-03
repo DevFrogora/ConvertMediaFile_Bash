@@ -14,7 +14,10 @@ ConfigDir=$ScriptDir"/Config"
 UpdateDir=$ScriptDir"/Update"
 UtilsDir=$ScriptDir"/Utils"
 
-BaseUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main"
+RepoRawUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main" # name should be RepoRawUrl
+FTPBaseUrl="ftp://172.22.176.1/ConvertMediaFile_Bash_Repo"
+
+
 Paths[Home]=$ScriptDir"/Home.sh"
 Paths[Gif2Frame]=$addonsDir"/gif2frames.sh"
 Paths[URLConfig]=$ConfigDir"/URLConfig.sh"
