@@ -4,23 +4,31 @@ URLConfigUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash
 checkForUpdateUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/checkForUpdate.sh"
 UpdateDownloaderUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/UpdateDownloader.sh"
 FileUtilsUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Utils/FileUtil.sh"
+ColorUtilUrl=""
 
 #check if we already have the configuration file or not
 if [ ! -f "./Scripts/Config/URLConfig.sh" ]; then
 
     # check if we have download file
     if [ ! -f "./URLConfig.sh" ]; then
-        echo "Downloading Update Material :/"
+        echo "$(tput bold) Downloading Update Material :/"
+        echo -e "$(tput setaf 2) $URLConfigUrl"
         wget -q $URLConfigUrl
+        echo -e "$(tput setaf 2) $checkForUpdateUrl"
         wget -q $checkForUpdateUrl
+        echo -e "$(tput setaf 2) $UpdateDownloaderUrl"
         wget -q $UpdateDownloaderUrl
+        echo -e "$(tput setaf 2) $FileUtilsUrl"
         wget -q $FileUtilsUrl
+        echo -e "$(tput setaf 2) $ColorUtilUrl"
+        wget -q $ColorUtilUrl
     fi
     echo "Importing Downloaded Update Material."
     . ./URLConfig.sh
     . ./checkForUpdate.sh
     . ./UpdateDownloader.sh
     . ./FileUtil.sh
+    . ./ColorUtil.sh
 else
     echo "Importing existing Update Material."
     . ./Scripts/Config/URLConfig.sh
@@ -31,7 +39,7 @@ else
 
 fi
 
-echo "Checking For Update ."
+echo "$(tput setaf 3) Checking For Update ."
 if [ "$(IsUpdateNeeded)" == "true" ]; then
     echo "Updating Wait :/ ."
     RemovePreviousFiles
