@@ -13,7 +13,6 @@ function IsUpdateNeeded() {
             CurrentVersion=$(wget -qO - $FileVersionUrl)
         fi
 
-
         if ((CurrentVersion != FileVersion)); then
 
             # download the files
@@ -28,19 +27,27 @@ function IsUpdateNeeded() {
 }
 
 function BeforeUpdate() {
-    URLConfigUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Config/URLConfig.sh"
-    checkForUpdateUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/checkForUpdate.sh"
-    UpdateDownloaderUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Update/UpdateDownloader.sh"
-    FileUtilsUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/Scripts/Utils/FileUtil.sh"
 
     if [ ! -f "./URLConfig.sh" ]; then
-        wget $URLConfigUrl
-        wget $checkForUpdateUrl
-        wget $UpdateDownloaderUrl
-        wget $FileUtilsUrl
+        echo "$(tput bold) Downloading Update Material :/"
+        if [ $serverName == "FTP" ]; then
+            DownloadFTPFiles $URLConfigUrl
+            DownloadFTPFiles $checkForUpdateUrl
+            DownloadFTPFiles $UpdateDownloaderUrl
+            DownloadFTPFiles $FileUtilsUrl
+            DownloadFTPFiles $ColorUtilUrl
+        else
+            DownloadFile $URLConfigUrl
+            DownloadFile $checkForUpdateUrl
+            DownloadFile $UpdateDownloaderUrl
+            DownloadFile $FileUtilsUrl
+            DownloadFile $ColorUtilUrl
+        fi
     fi
+    echo "Importing Downloaded Update Material."
     . ./URLConfig.sh
     . ./checkForUpdate.sh
     . ./UpdateDownloader.sh
     . ./FileUtil.sh
+    . ./ColorUtil.sh
 }
