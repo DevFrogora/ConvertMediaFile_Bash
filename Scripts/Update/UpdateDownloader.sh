@@ -23,14 +23,19 @@ function Progress() {
 
 function UpdateProgress() {
     local fileCount=0
-    echo "$RepoRawUrl"
+    echo "$serverName"
     for key in "${!Paths[@]}"; do
         fileCount=$((fileCount + 1))
         # Url ${URLs[$i]} , Path ${Paths[$i]}
         local lengthOfPath="${#Paths[@]}"
         Progress $((fileCount)) $lengthOfPath
 
-        DownloadFile "$RepoRawUrl/${Paths[$key]}" "${Paths[$key]}"
+        if [ $serverName == "FTP" ]; then
+            DownloadFTPFiles "$RepoRawUrl/${Paths[$key]}" "${Paths[$key]}"
+        else
+            DownloadFile "$RepoRawUrl/${Paths[$key]}" "${Paths[$key]}"
+        fi
+
         sleep 3s
     done
 
