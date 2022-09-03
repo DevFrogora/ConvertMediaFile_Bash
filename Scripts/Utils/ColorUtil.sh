@@ -1,7 +1,7 @@
 #https://linuxcommand.org/lc3_adv_tput.php
 #special
 GI_BLINK="$(tput blink)"
-GI_NORMAL="$(tput agr0)"
+GI_NORMAL="$(tput sgr0)"
 GI_BOLD="$(tput bold)"
 #foreground
 GI_FG_BLACK="$(tput setaf 0)"
