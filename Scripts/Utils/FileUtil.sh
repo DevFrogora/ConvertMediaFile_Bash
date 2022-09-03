@@ -27,7 +27,6 @@ function DownloadFTPFiles() {
     
     if [ ! -f $2 ]; then
         powershell.exe -ExecutionPolicy Bypass -Command "cmd /c curl -s -u FTPUser:FTPUser $1 -o $2" #-u user , -s silent
-        wget -q $1 -O $2
         echo "Path $2 , URL $1"
     fi
     echo "~Path $2 , URL $1"
