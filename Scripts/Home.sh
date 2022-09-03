@@ -14,7 +14,7 @@ while true; do
     case "$option" in
     1) MakeGifToFrames ;;
     2) echo "two" ;;
-    3) $(powershell.exe Start chrome.exe "https://github.com/DevFrogora/ConvertMediaFile_Bash/issues") ;;
+    3) $(powershell.exe Start chrome.exe "$RepoUrl/issues") ;;
     *) exit ;;
     esac
 done

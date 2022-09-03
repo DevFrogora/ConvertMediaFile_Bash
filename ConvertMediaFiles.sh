@@ -8,18 +8,21 @@ FileUtilsUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash
 #check if we already have the configuration file or not
 if [ ! -f "./Scripts/Config/URLConfig.sh" ]; then
 
-    # check if we have download file 
+    # check if we have download file
     if [ ! -f "./URLConfig.sh" ]; then
-        wget $URLConfigUrl
-        wget $checkForUpdateUrl
-        wget $UpdateDownloaderUrl
-        wget $FileUtilsUrl
+        echo "Downloading Update Material :/"
+        wget -q $URLConfigUrl
+        wget -q $checkForUpdateUrl
+        wget -q $UpdateDownloaderUrl
+        wget -q $FileUtilsUrl
     fi
+    echo "Importing Downloaded Update Material."
     . ./URLConfig.sh
     . ./checkForUpdate.sh
     . ./UpdateDownloader.sh
     . ./FileUtil.sh
 else
+    echo "Importing existing Update Material."
     . ./Scripts/Config/URLConfig.sh
     . $ConfigDir/URLConfig.sh
     . $UpdateDir/checkForUpdate.sh
@@ -28,7 +31,9 @@ else
 
 fi
 
+echo "Checking For Update ."
 if [ "$(IsUpdateNeeded)" == "true" ]; then
+    echo "Updating Wait :/ ."
     RemovePreviousFiles
     BeforeUpdate
     UpdateCycle

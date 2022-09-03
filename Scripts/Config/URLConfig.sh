@@ -3,7 +3,9 @@ declare -A URLs
 
 #for update
 FileVersion=1662052212
-FileVersionUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/CurrentVersion.txt"
+FileVersionUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main/CurrentVersion.txt";
+RepoUrl="https://github.com/DevFrogora/ConvertMediaFile_Bash";
+
 
 #for creating Directory
 ScriptDir="Scripts"
