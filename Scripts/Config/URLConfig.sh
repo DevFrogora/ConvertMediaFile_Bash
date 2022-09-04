@@ -2,7 +2,9 @@ declare -A Paths
 declare -A URLs
 
 RepoRawUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main" # name should be RepoRawUrl
-FTPBaseUrl="ftp://172.22.176.1/ConvertMediaFile_Bash_Repo"
+
+FTP_IP="172.19.224.1"
+FTPBaseUrl="ftp://$FTP_IP/ConvertMediaFile_Bash_Repo"
 
 serverName="FTP"
 
