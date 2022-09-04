@@ -68,19 +68,19 @@ function UpdateCycle() {
 function BeforeUpdate() {
 
     if [ ! -f "./URLConfig.sh" ]; then
-        echo "$(tput bold) Downloading Update Material :/"
+        echo "$GI_BOLD Downloading Update Material from $serverName $GI_NORMAL:/"
         if [ $serverName == "FTP" ]; then
-            DownloadFTPFiles $URLConfigUrl
-            DownloadFTPFiles $checkForUpdateUrl
-            DownloadFTPFiles $UpdateDownloaderUrl
-            DownloadFTPFiles $FileUtilsUrl
-            DownloadFTPFiles $ColorUtilUrl
+            DownloadFTPFilesInCurrent $URLConfigUrl
+            DownloadFTPFilesInCurrent $checkForUpdateUrl
+            DownloadFTPFilesInCurrent $UpdateDownloaderUrl
+            DownloadFTPFilesInCurrent $FileUtilsUrl
+            DownloadFTPFilesInCurrent $ColorUtilUrl
         else
-            DownloadFile $URLConfigUrl
-            DownloadFile $checkForUpdateUrl
-            DownloadFile $UpdateDownloaderUrl
-            DownloadFile $FileUtilsUrl
-            DownloadFile $ColorUtilUrl
+            DownloadFileInCurrent $URLConfigUrl
+            DownloadFileInCurrent $checkForUpdateUrl
+            DownloadFileInCurrent $UpdateDownloaderUrl
+            DownloadFileInCurrent $FileUtilsUrl
+            DownloadFileInCurrent $ColorUtilUrl
         fi
     fi
     echo "Importing Downloaded Update Material."

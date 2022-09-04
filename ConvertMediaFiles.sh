@@ -14,12 +14,12 @@ UpdateDownloaderUrl=$RepoRawUrl"/Scripts/Update/UpdateDownloader.sh"
 FileUtilsUrl=$RepoRawUrl"/Scripts/Utils/FileUtil.sh"
 ColorUtilUrl=$RepoRawUrl"/Scripts/Utils/ColorUtil.sh"
 
-function DownloadFile() {
+function DownloadFileInCurrent() {
     echo -e "$(tput setaf 2) $1"
     wget -q $1
 }
 
-function DownloadFTPFiles() {
+function DownloadFTPFilesInCurrent() {
     #FTPBaseUrl=ftp://172.22.176.1/Repo  <-$1
     #powershell.exe -ExecutionPolicy Bypass -Command "cmd /c curl -u FTPUser:FTPUser ftp://172.22.176.1/Hello/image0.jpg -o ./image.jpg"
     #powershell.exe -ExecutionPolicy Bypass -Command "cmd /c curl -u FTPUser:FTPUser --remote-name ftp://172.22.176.1/Hello/image0.jpg"
@@ -35,17 +35,17 @@ if [ ! -f "./Scripts/Config/URLConfig.sh" ]; then
     if [ ! -f "./URLConfig.sh" ]; then
         echo "$(tput bold) Downloading Update Material :/"
         if [ $serverName == "FTP" ]; then
-            DownloadFTPFiles $URLConfigUrl
-            DownloadFTPFiles $checkForUpdateUrl
-            DownloadFTPFiles $UpdateDownloaderUrl
-            DownloadFTPFiles $FileUtilsUrl
-            DownloadFTPFiles $ColorUtilUrl
+            DownloadFTPFilesInCurrent $URLConfigUrl
+            DownloadFTPFilesInCurrent $checkForUpdateUrl
+            DownloadFTPFilesInCurrent $UpdateDownloaderUrl
+            DownloadFTPFilesInCurrent $FileUtilsUrl
+            DownloadFTPFilesInCurrent $ColorUtilUrl
         else
-            DownloadFile $URLConfigUrl
-            DownloadFile $checkForUpdateUrl
-            DownloadFile $UpdateDownloaderUrl
-            DownloadFile $FileUtilsUrl
-            DownloadFile $ColorUtilUrl
+            DownloadFileInCurrent $URLConfigUrl
+            DownloadFileInCurrent $checkForUpdateUrl
+            DownloadFileInCurrent $UpdateDownloaderUrl
+            DownloadFileInCurrent $FileUtilsUrl
+            DownloadFileInCurrent $ColorUtilUrl
         fi
     fi
     echo "Importing Downloaded Update Material."
