@@ -64,7 +64,7 @@ else
 
 fi
 
-echo "$(tput setaf 3) Checking For Update ."
+echo "$GI_FG_YELLOW Checking For Update $GI_NORMAL."
 if [ "$(IsUpdateNeeded)" == "true" ]; then
     echo "Updating Wait :/ ."
     RemovePreviousFiles

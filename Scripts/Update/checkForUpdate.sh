@@ -26,28 +26,4 @@ function IsUpdateNeeded() {
     fi
 }
 
-function BeforeUpdate() {
 
-    if [ ! -f "./URLConfig.sh" ]; then
-        echo "$(tput bold) Downloading Update Material :/"
-        if [ $serverName == "FTP" ]; then
-            DownloadFTPFiles $URLConfigUrl
-            DownloadFTPFiles $checkForUpdateUrl
-            DownloadFTPFiles $UpdateDownloaderUrl
-            DownloadFTPFiles $FileUtilsUrl
-            DownloadFTPFiles $ColorUtilUrl
-        else
-            DownloadFile $URLConfigUrl
-            DownloadFile $checkForUpdateUrl
-            DownloadFile $UpdateDownloaderUrl
-            DownloadFile $FileUtilsUrl
-            DownloadFile $ColorUtilUrl
-        fi
-    fi
-    echo "Importing Downloaded Update Material."
-    . ./URLConfig.sh
-    . ./checkForUpdate.sh
-    . ./UpdateDownloader.sh
-    . ./FileUtil.sh
-    . ./ColorUtil.sh
-}
