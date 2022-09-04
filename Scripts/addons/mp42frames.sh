@@ -6,16 +6,15 @@
 FrameDirectory="Frames"
 NullFile="NUL"
 
-function MakeGifToFrames() {
-    echo -e "Pass the Gif File Name and Output_Directory: \c"
+function MakeMp4ToFrames() {
+    echo -e "Pass the Mp4 File Name and Output_Directory: \c"
     read filename outputDir
     if [[ ("$filename" == "") || ("$outputDir" == "") ]]; then
 
-        echo "Error in input enter: filename.gif OutputDirectoryName"
-        MakeGifToFrames
+        echo "Error in input enter: filename.mp4 OutputDirectoryName"
 
     else
-        if [[ ("$filename" == *.gif) && (-f $filename) ]]; then
+        if [[ ("$filename" == *.mp4) && (-f $filename) ]]; then
 
             rm -rf $outputDir
             CreateDirectory $outputDir
@@ -25,8 +24,7 @@ function MakeGifToFrames() {
             RemoveNULFile
             echo "Done"
         else
-            echo "its not a gif file"
-            MakeGifToFrames
+            echo "its not a mp4 file"
         fi
 
     fi
