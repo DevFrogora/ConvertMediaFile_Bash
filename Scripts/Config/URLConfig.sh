@@ -30,6 +30,8 @@ UtilsDir=$ScriptDir"/Utils"
 
 Paths[Home]=$ScriptDir"/Home.sh"
 Paths[Gif2Frame]=$addonsDir"/gif2frames.sh"
+Paths[mp42frames]=$addonsDir"/mp42frames.sh"
+Paths[allGif2DifferentMp4]=$addonsDir"/allGif2DifferentMp4.sh"
 Paths[URLConfig]=$ConfigDir"/URLConfig.sh"
 Paths[checkForUpdate]=$UpdateDir"/checkForUpdate.sh"
 Paths[UpdateDownloader]=$UpdateDir"/UpdateDownloader.sh"
