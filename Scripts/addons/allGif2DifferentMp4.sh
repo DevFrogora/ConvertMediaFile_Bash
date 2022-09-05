@@ -20,20 +20,21 @@ function AllGif2DifferentMp4() {
         AllGif2DifferentMp4
 
     else
-        if [ -d $OutputFolder"/"$FrameDirectory ]; then
-            echo "Clear Frame Dir"
-            rm $OutputFolder"/"$FrameDirectory/* # remove all files from Frames and WebMs to prevent errors
-        else
-            echo "1"
-            mkdir $OutputFolder"/"$FrameDirectory
-        fi
 
         if [ -d $OutputFolder ]; then
-            echo "Clear Frame Dir"
-            rm CompletedVideo/* # remove all files from Frames and WebMs to prevent errors
+            echo "Clear $OutputFolder Dir"
+            rm $OutputFolder/* # remove all files from Frames and WebMs to prevent errors
         else
-            echo "2"
+            # echo "2"
             mkdir $OutputFolder
+        fi
+
+        if [ -d $OutputFolder"/"$FrameDirectory ]; then
+            echo "Clear $OutputFolder"/"$FrameDirectory Dir"
+            rm $OutputFolder"/"$FrameDirectory/* # remove all files from Frames and WebMs to prevent errors
+        else
+            # echo "1"
+            mkdir $OutputFolder"/"$FrameDirectory
         fi
 
         count=0
@@ -41,14 +42,14 @@ function AllGif2DifferentMp4() {
 
             sleep 2
             if [ -d $OutputFolder"/"$FrameDirectory ]; then
-                echo "Clear Frame Dir"
+                echo "Clear $OutputFolder"/"$FrameDirectory Dir"
                 rm $OutputFolder"/"$FrameDirectory/* # remove all files from Frames and WebMs to prevent errors
             else
                 mkdir $OutputFolder"/"$FrameDirectory
             fi
             sleep 2
 
-            echo $FILE
+            echo $FILE" is under Process ..."
             ffmpeg -i "$FILE" $OutputFolder"/"$FrameDirectory/output_%05d.png 2>NUL # convert video into frames at 30fps, save output files to Frames
             if [ -e "$NullFile" ]; then
                 rm ./NUL
@@ -56,20 +57,19 @@ function AllGif2DifferentMp4() {
 
             ffmpeg -i $OutputFolder"/"$FrameDirectory/output_%05d.png -vcodec libx264 \
                 -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" -r 24 \
-                -y -an $OutputVideo".mp4"
+                -y -an $OutputVideo".mp4" 2>NUL
 
             count=$(ls "$OutputFolder" | wc -l)
-            echo "$(($count + 1))"
+            # echo "$(($count + 1))"
 
             RenameFile=$OutputVideo"_$(($count + 1)).mp4"
             mv $OutputVideo".mp4" $RenameFile
 
             mv $RenameFile $OutputFolder
-            echo "$RenameFile , $OutputFolder"
-            echo pwd
+            #echo "$RenameFile , $OutputFolder"
         done
-        echo "$RenameFile , $OutputFolder"
-        pwd
+        # echo "$RenameFile , $OutputFolder"
+        # pwd
         echo "Done"
     fi
 }
