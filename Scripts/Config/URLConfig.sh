@@ -3,10 +3,10 @@ declare -A URLs
 
 RepoRawUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main" # name should be RepoRawUrl
 
-FTP_IP="172.19.224.1"
+FTP_IP="172.26.112.1"
 FTPBaseUrl="ftp://$FTP_IP/ConvertMediaFile_Bash_Repo"
 
-serverName="FTP"
+serverName="NP"
 
 if [ $serverName == "FTP" ]; then
     RepoRawUrl=$FTPBaseUrl
