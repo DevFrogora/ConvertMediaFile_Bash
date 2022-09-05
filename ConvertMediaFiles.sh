@@ -1,6 +1,6 @@
 #!/bin/bash
 RepoRawUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/main"
-FTP_IP="172.19.224.1"
+FTP_IP="172.26.112.1"
 FTPBaseUrl="ftp://$FTP_IP/ConvertMediaFile_Bash_Repo"
 
 serverName="No"
