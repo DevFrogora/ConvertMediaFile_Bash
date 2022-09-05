@@ -70,6 +70,7 @@ function AllGif2DifferentMp4() {
         done
         # echo "$RenameFile , $OutputFolder"
         # pwd
+        RemoveNULFile
         echo "Done"
     fi
 }
