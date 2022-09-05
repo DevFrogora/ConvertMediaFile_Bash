@@ -3,7 +3,7 @@ RepoRawUrl="https://raw.githubusercontent.com/DevFrogora/ConvertMediaFile_Bash/m
 FTP_IP="172.19.224.1"
 FTPBaseUrl="ftp://$FTP_IP/ConvertMediaFile_Bash_Repo"
 
-serverName="FTP"
+serverName="No"
 
 if [ $serverName == "FTP" ]; then
     RepoRawUrl=$FTPBaseUrl
